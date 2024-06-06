@@ -1,0 +1,84 @@
+within Main
+
+use io
+use math
+use utils
+
+macro PrintTypeInfo[T] {
+    Print("Type Name: {T.name}")
+    for field in T.fields {
+        Print("Field: {field.name} of type {field.type}")
+    }
+}
+
+// Enum definition
+enum Result<T, E> {
+    case Success(T)
+    case Failure(E)
+}
+
+// Trait definition
+traits Printable {
+    func Description() -> String
+}
+
+// Class definition with trait implementation and operator overloading
+class Vector: Printable {
+    const x: Float
+    const y: Float
+
+    init(x: Float, y: Float) {
+        self.x = x
+        self.y = y
+    }
+
+    static func Add(lhs: Vector, rhs: Vector) -> Vector {
+        return Vector(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+    }
+
+    func Description() -> String {
+        return "Vector(x: {x}, y: {y})"
+    }
+}
+
+// Function with guard statement
+func ValidateAge(age: Int) -> String {
+    guard age >= 18 else {
+        return "You must be at least 18 years old."
+    }
+    return "Welcome!"
+}
+
+// Main function to demonstrate various features
+func Main() {
+    Print("Hello, World!")
+
+    // Use macro
+    PrintTypeInfo[Vector]()
+
+    // Create and use an instance of Vector
+    const v1 = Vector(x: 1.0, y: 2.0)
+    const v2 = Vector(x: 3.0, y: 4.0)
+    const v3 = Vector.Add(lhs: v1, rhs: v2)
+    Print(v3.Description())
+
+    // Use an enum with pattern matching
+    const result: Result<Int, String> = Result.Success(42)
+    switch result {
+    case .Success(let value):
+        Print("Success: {value}")
+    case .Failure(let error):
+        Print("Error: {error}")
+    }
+
+    // Use a function with guard statement
+    Print(ValidateAge(age: 20))
+    Print(ValidateAge(age: 16))
+
+    // Use map and filter functions
+    const numbers = [1, 2, 3, 4, 5]
+    const squaredNumbers = numbers.Map { $0 * $0 }
+    const evenNumbers = numbers.Filter { $0 % 2 == 0 }
+    Print("Squared Numbers: {squaredNumbers}")
+    Print("Even Numbers: {evenNumbers}")
+}
