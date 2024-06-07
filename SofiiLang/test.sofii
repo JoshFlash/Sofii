@@ -43,9 +43,10 @@ class Vector: Printable {
 
 // Function with guard statement
 func ValidateAge(age: Int) -> String {
-    guard age >= 18 else {
+    guard age >= 18 {
         return "You must be at least 18 years old."
     }
+    
     return "Welcome!"
 }
 
@@ -54,7 +55,7 @@ func Main() {
     Print("Hello, World!")
 
     // Use macro
-    PrintTypeInfo<Vector>()
+    PrintTypeInfo->(Vector)
 
     // Create and use an instance of Vector
     const v1 = Vector(1.0, 2.0)

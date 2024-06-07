@@ -85,6 +85,7 @@ statement:
     | for_stmt
     | while_stmt
     | switch_stmt
+    | guard_stmt
     | expression_stmt
     ;
 
@@ -100,9 +101,10 @@ class_def: CLASS IDENTIFIER (':' IDENTIFIER)? LBRACE class_body* RBRACE;
 
 class_body: const_def | func_def | init_def | var_def | statement;
 
-const_def: CONST IDENTIFIER COLON type (ASSIGN expression)?;
+const_def: CONST IDENTIFIER (COLON type)? (ASSIGN expression)?;
+var_def: VAR IDENTIFIER (COLON type)? (ASSIGN expression)?;
 
-macro_def: MACRO IDENTIFIER LT IDENTIFIER GT LBRACE statement* RBRACE;
+macro_def: MACRO IDENTIFIER generic_params LBRACE statement* RBRACE;
 
 func_def: FUNC IDENTIFIER LPAREN param_list? RPAREN (ARROW type)? LBRACE statement* RBRACE;
 
@@ -113,8 +115,6 @@ param: IDENTIFIER COLON type;
 
 type: IDENTIFIER | generic_type;
 generic_type: IDENTIFIER LT type (COMMA type)* GT;
-
-var_def: VAR IDENTIFIER COLON type (ASSIGN expression)?;
 
 assign_stmt: (IDENTIFIER | member_access) ASSIGN expression;
 
@@ -127,17 +127,24 @@ for_stmt: FOR IDENTIFIER IN expression block;
 while_stmt: WHILE expression block;
 
 switch_stmt: SWITCH expression LBRACE switch_case* RBRACE;
-switch_case: CASE expression COLON block;
+switch_case: CASE IDENTIFIER LPAREN IDENTIFIER RPAREN COLON block;
+
+guard_stmt: GUARD expression block;
+
+lambda_expression: LBRACE param COLON type ARROW expression RBRACE;
 
 block: LBRACE statement* RBRACE;
 
 expression_stmt: expression;
 
 expression: primary (operator primary)*;
-primary: IDENTIFIER | INT_LITERAL | FLOAT_LITERAL | STRING_LITERAL | BOOL_LITERAL | func_call | member_access | object_creation;
-func_call: IDENTIFIER LPAREN (expression (COMMA expression)*)? RPAREN;
-member_access: IDENTIFIER (DOT IDENTIFIER)+;
+primary: IDENTIFIER | INT_LITERAL | FLOAT_LITERAL | STRING_LITERAL | BOOL_LITERAL | command_call | member_access;
 
+command_call: func_call | macro_call | object_creation;
+func_call: IDENTIFIER LPAREN (expression (COMMA expression)*)? RPAREN;
+macro_call: IDENTIFIER ARROW LPAREN (expression (COMMA expression)*)? RPAREN;
 object_creation: IDENTIFIER LPAREN (expression (COMMA expression)*)? RPAREN;
+
+member_access: IDENTIFIER (DOT IDENTIFIER)+;
 
 operator: PLUS | MINUS | STAR | SLASH | EQUAL | NOTEQUAL | LT | GT | LTE | GTE | AND | OR | NOT;

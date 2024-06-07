@@ -151,6 +151,16 @@ public interface ISofiiListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitConst_def([NotNull] SofiiParser.Const_defContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.var_def"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterVar_def([NotNull] SofiiParser.Var_defContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.var_def"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitVar_def([NotNull] SofiiParser.Var_defContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.macro_def"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -220,16 +230,6 @@ public interface ISofiiListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitGeneric_type([NotNull] SofiiParser.Generic_typeContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="SofiiParser.var_def"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterVar_def([NotNull] SofiiParser.Var_defContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SofiiParser.var_def"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitVar_def([NotNull] SofiiParser.Var_defContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.assign_stmt"/>.
 	/// </summary>
@@ -301,6 +301,26 @@ public interface ISofiiListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitSwitch_case([NotNull] SofiiParser.Switch_caseContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.guard_stmt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterGuard_stmt([NotNull] SofiiParser.Guard_stmtContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.guard_stmt"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitGuard_stmt([NotNull] SofiiParser.Guard_stmtContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.lambda_expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterLambda_expression([NotNull] SofiiParser.Lambda_expressionContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.lambda_expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitLambda_expression([NotNull] SofiiParser.Lambda_expressionContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.block"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -341,6 +361,16 @@ public interface ISofiiListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitPrimary([NotNull] SofiiParser.PrimaryContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.command_call"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCommand_call([NotNull] SofiiParser.Command_callContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.command_call"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCommand_call([NotNull] SofiiParser.Command_callContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.func_call"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -351,15 +381,15 @@ public interface ISofiiListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitFunc_call([NotNull] SofiiParser.Func_callContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SofiiParser.member_access"/>.
+	/// Enter a parse tree produced by <see cref="SofiiParser.macro_call"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMember_access([NotNull] SofiiParser.Member_accessContext context);
+	void EnterMacro_call([NotNull] SofiiParser.Macro_callContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="SofiiParser.member_access"/>.
+	/// Exit a parse tree produced by <see cref="SofiiParser.macro_call"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMember_access([NotNull] SofiiParser.Member_accessContext context);
+	void ExitMacro_call([NotNull] SofiiParser.Macro_callContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.object_creation"/>.
 	/// </summary>
@@ -370,6 +400,16 @@ public interface ISofiiListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitObject_creation([NotNull] SofiiParser.Object_creationContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.member_access"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMember_access([NotNull] SofiiParser.Member_accessContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.member_access"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMember_access([NotNull] SofiiParser.Member_accessContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.operator"/>.
 	/// </summary>
