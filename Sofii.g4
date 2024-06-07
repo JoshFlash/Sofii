@@ -62,36 +62,52 @@ BLOCK_COMMENT: '/*' .*? '*/' -> skip;
 WS: [ \t\r\n]+ -> skip;
 
 // Parser rules
-program: (use_stmt | enum_def | traits_def | class_def | func_def | macro_def | within_stmt)*;
+program: (use_stmt | within_stmt | statement)*;
 
-use_stmt: USE IDENTIFIER (DOT IDENTIFIER)* SEMICOLON;
+within_stmt: WITHIN IDENTIFIER statement*;
 
-enum_def: ENUM IDENTIFIER LBRACE (CASE IDENTIFIER LPAREN type RPAREN)* RBRACE;
+use_stmt: USE IDENTIFIER (DOT IDENTIFIER)*;
 
-traits_def: TRAITS IDENTIFIER LBRACE (func_def)* RBRACE;
+statement: 
+    enum_def
+    | traits_def
+    | class_def
+    | func_def
+    | macro_def
+    | var_def
+    | assign_stmt
+    | return_stmt
+    | if_stmt
+    | for_stmt
+    | while_stmt
+    | switch_stmt
+    | expression_stmt
+    ;
+
+enum_def: ENUM IDENTIFIER LBRACE enum_case* RBRACE;
+
+enum_case: CASE IDENTIFIER LPAREN type RPAREN;
+
+traits_def: TRAITS IDENTIFIER LBRACE func_def* RBRACE;
 
 class_def: CLASS IDENTIFIER (':' IDENTIFIER)? LBRACE (const_def | func_def)* RBRACE;
 
 const_def: CONST IDENTIFIER COLON type ASSIGN expression SEMICOLON;
 
-macro_def: MACRO IDENTIFIER LT IDENTIFIER GT LBRACE (statement)* RBRACE;
+macro_def: MACRO IDENTIFIER LT IDENTIFIER GT LBRACE statement* RBRACE;
 
-within_stmt: WITHIN IDENTIFIER LBRACE (statement)* RBRACE;
-
-func_def: FUNC IDENTIFIER LPAREN (param_list)? RPAREN (ARROW type)? LBRACE (statement)* RBRACE;
+func_def: FUNC IDENTIFIER LPAREN param_list? RPAREN (ARROW type)? LBRACE statement* RBRACE;
 
 param_list: param (COMMA param)*;
 param: IDENTIFIER COLON type;
 
 type: IDENTIFIER;
 
-statement: (var_def | assign_stmt | return_stmt | if_stmt | for_stmt | while_stmt | switch_stmt | expression_stmt) SEMICOLON;
+var_def: VAR IDENTIFIER COLON type ASSIGN expression SEMICOLON;
 
-var_def: VAR IDENTIFIER COLON type ASSIGN expression;
+assign_stmt: IDENTIFIER ASSIGN expression SEMICOLON;
 
-assign_stmt: IDENTIFIER ASSIGN expression;
-
-return_stmt: RETURN expression?;
+return_stmt: RETURN expression? SEMICOLON;
 
 if_stmt: IF expression block (ELSE block)?;
 
@@ -99,9 +115,10 @@ for_stmt: FOR IDENTIFIER IN expression block;
 
 while_stmt: WHILE expression block;
 
-switch_stmt: SWITCH expression LBRACE (CASE expression COLON block)* RBRACE;
+switch_stmt: SWITCH expression LBRACE switch_case* RBRACE;
+switch_case: CASE expression COLON block;
 
-block: LBRACE (statement)* RBRACE;
+block: LBRACE statement* RBRACE;
 
 expression_stmt: expression;
 
@@ -110,4 +127,3 @@ primary: IDENTIFIER | INT_LITERAL | FLOAT_LITERAL | STRING_LITERAL | BOOL_LITERA
 func_call: IDENTIFIER LPAREN (expression (COMMA expression)*)? RPAREN;
 
 operator: PLUS | MINUS | STAR | SLASH | EQUAL | NOTEQUAL | LT | GT | LTE | GTE | AND | OR | NOT;
-

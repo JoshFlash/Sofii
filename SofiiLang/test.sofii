@@ -4,7 +4,7 @@ use io
 use math
 use utils
 
-macro PrintTypeInfo[T] {
+macro PrintTypeInfo<T> {
     Print("Type Name: {T.name}")
     for field in T.fields {
         Print("Field: {field.name} of type {field.type}")
