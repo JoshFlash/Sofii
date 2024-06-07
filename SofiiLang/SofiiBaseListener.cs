@@ -96,6 +96,18 @@ public partial class SofiiBaseListener : ISofiiListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitEnum_def([NotNull] SofiiParser.Enum_defContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.generic_params"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterGeneric_params([NotNull] SofiiParser.Generic_paramsContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.generic_params"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitGeneric_params([NotNull] SofiiParser.Generic_paramsContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.enum_case"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -203,6 +215,18 @@ public partial class SofiiBaseListener : ISofiiListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitType([NotNull] SofiiParser.TypeContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.generic_type"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterGeneric_type([NotNull] SofiiParser.Generic_typeContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.generic_type"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitGeneric_type([NotNull] SofiiParser.Generic_typeContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.var_def"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -359,6 +383,18 @@ public partial class SofiiBaseListener : ISofiiListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitFunc_call([NotNull] SofiiParser.Func_callContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.member_access"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMember_access([NotNull] SofiiParser.Member_accessContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.member_access"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMember_access([NotNull] SofiiParser.Member_accessContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.operator"/>.
 	/// <para>The default implementation does nothing.</para>

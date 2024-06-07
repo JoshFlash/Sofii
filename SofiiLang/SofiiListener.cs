@@ -81,6 +81,16 @@ public interface ISofiiListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitEnum_def([NotNull] SofiiParser.Enum_defContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.generic_params"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterGeneric_params([NotNull] SofiiParser.Generic_paramsContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.generic_params"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitGeneric_params([NotNull] SofiiParser.Generic_paramsContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.enum_case"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -170,6 +180,16 @@ public interface ISofiiListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitType([NotNull] SofiiParser.TypeContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.generic_type"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterGeneric_type([NotNull] SofiiParser.Generic_typeContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.generic_type"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitGeneric_type([NotNull] SofiiParser.Generic_typeContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.var_def"/>.
 	/// </summary>
@@ -300,6 +320,16 @@ public interface ISofiiListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitFunc_call([NotNull] SofiiParser.Func_callContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.member_access"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMember_access([NotNull] SofiiParser.Member_accessContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.member_access"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMember_access([NotNull] SofiiParser.Member_accessContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.operator"/>.
 	/// </summary>

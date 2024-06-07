@@ -84,9 +84,10 @@ statement:
     | expression_stmt
     ;
 
-enum_def: ENUM IDENTIFIER LBRACE enum_case* RBRACE;
+enum_def: ENUM IDENTIFIER generic_params? LBRACE enum_case* RBRACE;
+generic_params: LT type (COMMA type)* GT;
 
-enum_case: CASE IDENTIFIER LPAREN type RPAREN;
+enum_case: CASE IDENTIFIER (LPAREN type RPAREN)?;
 
 traits_def: TRAITS IDENTIFIER LBRACE func_def* RBRACE;
 
@@ -101,7 +102,8 @@ func_def: FUNC IDENTIFIER LPAREN param_list? RPAREN (ARROW type)? LBRACE stateme
 param_list: param (COMMA param)*;
 param: IDENTIFIER COLON type;
 
-type: IDENTIFIER;
+type: IDENTIFIER | generic_type;
+generic_type: IDENTIFIER LT type (COMMA type)* GT;
 
 var_def: VAR IDENTIFIER COLON type ASSIGN expression SEMICOLON;
 
@@ -123,7 +125,8 @@ block: LBRACE statement* RBRACE;
 expression_stmt: expression;
 
 expression: primary (operator primary)*;
-primary: IDENTIFIER | INT_LITERAL | FLOAT_LITERAL | STRING_LITERAL | BOOL_LITERAL | func_call;
+primary: IDENTIFIER | INT_LITERAL | FLOAT_LITERAL | STRING_LITERAL | BOOL_LITERAL | func_call | member_access;
 func_call: IDENTIFIER LPAREN (expression (COMMA expression)*)? RPAREN;
+member_access: IDENTIFIER (DOT IDENTIFIER)+;
 
 operator: PLUS | MINUS | STAR | SLASH | EQUAL | NOTEQUAL | LT | GT | LTE | GTE | AND | OR | NOT;
