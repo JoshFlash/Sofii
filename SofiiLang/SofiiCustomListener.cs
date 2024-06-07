@@ -48,7 +48,7 @@ public class SofiiCustomListener : SofiiBaseListener
         PrintRule($"Defining enum: {context.IDENTIFIER().ToString()}");
     }
 
-    public override void EnterTraits_def(SofiiParser.Traits_defContext context)
+    public override void EnterTrait_def(SofiiParser.Trait_defContext context)
     {
         PrintRule($"Defining traits: {context.IDENTIFIER().GetText()}");
     }
@@ -70,7 +70,7 @@ public class SofiiCustomListener : SofiiBaseListener
 
     public override void EnterAssign_stmt(SofiiParser.Assign_stmtContext context)
     {
-        PrintRule($"Assigning value to: {context.IDENTIFIER().GetText()}");
+        PrintRule($"Assigning value to: {context.IDENTIFIER()?.GetText()}");
     }
 
     public override void EnterReturn_stmt(SofiiParser.Return_stmtContext context)

@@ -18,7 +18,7 @@ enum Result<T, E> {
 }
 
 // Trait definition
-traits Printable {
+trait Printable {
     func Description() -> String
 }
 
@@ -33,7 +33,7 @@ class Vector: Printable {
     }
 
     static func Add(lhs: Vector, rhs: Vector) -> Vector {
-        return Vector(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+        return Vector(lhs.x + rhs.x, lhs.y + rhs.y)
     }
 
     func Description() -> String {
@@ -54,12 +54,12 @@ func Main() {
     Print("Hello, World!")
 
     // Use macro
-    PrintTypeInfo[Vector]()
+    PrintTypeInfo<Vector>()
 
     // Create and use an instance of Vector
-    const v1 = Vector(x: 1.0, y: 2.0)
-    const v2 = Vector(x: 3.0, y: 4.0)
-    const v3 = Vector.Add(lhs: v1, rhs: v2)
+    const v1 = Vector(1.0, 2.0)
+    const v2 = Vector(3.0, 4.0)
+    const v3 = Vector.Add(v1, v2)
     Print(v3.Description())
 
     // Use an enum with pattern matching
@@ -72,8 +72,8 @@ func Main() {
     }
 
     // Use a function with guard statement
-    Print(ValidateAge(age: 20))
-    Print(ValidateAge(age: 16))
+    Print(ValidateAge(20))
+    Print(ValidateAge(16))
 
     // Use map and filter functions
     const numbers = [1, 2, 3, 4, 5]

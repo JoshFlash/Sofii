@@ -8,7 +8,7 @@ CLASS: 'class';
 CONST: 'const';
 VAR: 'var';
 MACRO: 'macro';
-TRAITS: 'traits';
+TRAIT: 'trait';
 IF: 'if';
 ELSE: 'else';
 FOR: 'for';
@@ -18,6 +18,7 @@ CASE: 'case';
 ENUM: 'enum';
 RETURN: 'return';
 GUARD: 'guard';
+INIT: 'init';
 
 // Operators and Punctuation
 PLUS: '+';
@@ -31,8 +32,8 @@ LT: '<';
 GT: '>';
 LTE: '<=';
 GTE: '>=';
-AND: '&&';
-OR: '||';
+AND: '&';
+OR: '|';
 NOT: '!';
 LPAREN: '(';
 RPAREN: ')';
@@ -69,12 +70,15 @@ within_stmt: WITHIN IDENTIFIER statement*;
 use_stmt: USE IDENTIFIER (DOT IDENTIFIER)*;
 
 statement: 
-    enum_def
-    | traits_def
+    use_stmt
+    | enum_def
+    | trait_def
     | class_def
     | func_def
+    | init_def
     | macro_def
     | var_def
+    | const_def
     | assign_stmt
     | return_stmt
     | if_stmt
@@ -89,15 +93,20 @@ generic_params: LT type (COMMA type)* GT;
 
 enum_case: CASE IDENTIFIER (LPAREN type RPAREN)?;
 
-traits_def: TRAITS IDENTIFIER LBRACE func_def* RBRACE;
+trait_def: TRAIT IDENTIFIER LBRACE trait_method* RBRACE;
+trait_method: FUNC IDENTIFIER LPAREN param_list? RPAREN (ARROW type)?;
 
-class_def: CLASS IDENTIFIER (':' IDENTIFIER)? LBRACE (const_def | func_def)* RBRACE;
+class_def: CLASS IDENTIFIER (':' IDENTIFIER)? LBRACE class_body* RBRACE;
 
-const_def: CONST IDENTIFIER COLON type ASSIGN expression SEMICOLON;
+class_body: const_def | func_def | init_def | var_def | statement;
+
+const_def: CONST IDENTIFIER COLON type (ASSIGN expression)?;
 
 macro_def: MACRO IDENTIFIER LT IDENTIFIER GT LBRACE statement* RBRACE;
 
 func_def: FUNC IDENTIFIER LPAREN param_list? RPAREN (ARROW type)? LBRACE statement* RBRACE;
+
+init_def: INIT LPAREN param_list? RPAREN LBRACE statement* RBRACE;
 
 param_list: param (COMMA param)*;
 param: IDENTIFIER COLON type;
@@ -105,11 +114,11 @@ param: IDENTIFIER COLON type;
 type: IDENTIFIER | generic_type;
 generic_type: IDENTIFIER LT type (COMMA type)* GT;
 
-var_def: VAR IDENTIFIER COLON type ASSIGN expression SEMICOLON;
+var_def: VAR IDENTIFIER COLON type (ASSIGN expression)?;
 
-assign_stmt: IDENTIFIER ASSIGN expression SEMICOLON;
+assign_stmt: (IDENTIFIER | member_access) ASSIGN expression;
 
-return_stmt: RETURN expression? SEMICOLON;
+return_stmt: RETURN expression?;
 
 if_stmt: IF expression block (ELSE block)?;
 
@@ -125,8 +134,10 @@ block: LBRACE statement* RBRACE;
 expression_stmt: expression;
 
 expression: primary (operator primary)*;
-primary: IDENTIFIER | INT_LITERAL | FLOAT_LITERAL | STRING_LITERAL | BOOL_LITERAL | func_call | member_access;
+primary: IDENTIFIER | INT_LITERAL | FLOAT_LITERAL | STRING_LITERAL | BOOL_LITERAL | func_call | member_access | object_creation;
 func_call: IDENTIFIER LPAREN (expression (COMMA expression)*)? RPAREN;
 member_access: IDENTIFIER (DOT IDENTIFIER)+;
+
+object_creation: IDENTIFIER LPAREN (expression (COMMA expression)*)? RPAREN;
 
 operator: PLUS | MINUS | STAR | SLASH | EQUAL | NOTEQUAL | LT | GT | LTE | GTE | AND | OR | NOT;
