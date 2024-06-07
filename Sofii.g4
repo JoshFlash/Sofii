@@ -127,7 +127,7 @@ for_stmt: FOR IDENTIFIER IN expression block;
 while_stmt: WHILE expression block;
 
 switch_stmt: SWITCH expression LBRACE switch_case* RBRACE;
-switch_case: CASE IDENTIFIER LPAREN IDENTIFIER RPAREN COLON block;
+switch_case: CASE IDENTIFIER LPAREN IDENTIFIER RPAREN block;
 
 guard_stmt: GUARD expression block;
 
@@ -140,7 +140,8 @@ expression_stmt: expression;
 expression: primary (operator primary)*;
 primary: IDENTIFIER | INT_LITERAL | FLOAT_LITERAL | STRING_LITERAL | BOOL_LITERAL | command_call | member_access;
 
-command_call: func_call | macro_call | object_creation;
+command_call: func_call | method_call | macro_call | object_creation;
+method_call : member_access LPAREN (expression (COMMA expression)*)? RPAREN;
 func_call: IDENTIFIER LPAREN (expression (COMMA expression)*)? RPAREN;
 macro_call: IDENTIFIER ARROW LPAREN (expression (COMMA expression)*)? RPAREN;
 object_creation: IDENTIFIER LPAREN (expression (COMMA expression)*)? RPAREN;

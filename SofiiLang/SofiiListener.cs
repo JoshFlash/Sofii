@@ -371,6 +371,16 @@ public interface ISofiiListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitCommand_call([NotNull] SofiiParser.Command_callContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.method_call"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMethod_call([NotNull] SofiiParser.Method_callContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.method_call"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMethod_call([NotNull] SofiiParser.Method_callContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.func_call"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

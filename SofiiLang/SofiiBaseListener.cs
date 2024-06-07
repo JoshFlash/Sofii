@@ -444,6 +444,18 @@ public partial class SofiiBaseListener : ISofiiListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitCommand_call([NotNull] SofiiParser.Command_callContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.method_call"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMethod_call([NotNull] SofiiParser.Method_callContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.method_call"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMethod_call([NotNull] SofiiParser.Method_callContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.func_call"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

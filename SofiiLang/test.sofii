@@ -66,10 +66,12 @@ func Main() {
     // Use an enum with pattern matching
     const result: Result<Int, String> = Result.Success(42)
     switch result {
-    case .Success(let value):
-        Print("Success: {value}")
-    case .Failure(let error):
-        Print("Error: {error}")
+        case Success(value) {
+            Print("Success: {value}")
+        }
+        case Failure(error) {
+            Print("Error: {error}")
+        }
     }
 
     // Use a function with guard statement
