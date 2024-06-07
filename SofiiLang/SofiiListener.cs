@@ -321,6 +321,16 @@ public interface ISofiiListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitLambda_expression([NotNull] SofiiParser.Lambda_expressionContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.interpolated_string"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterInterpolated_string([NotNull] SofiiParser.Interpolated_stringContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.interpolated_string"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitInterpolated_string([NotNull] SofiiParser.Interpolated_stringContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.block"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

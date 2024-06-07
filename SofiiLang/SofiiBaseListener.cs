@@ -384,6 +384,18 @@ public partial class SofiiBaseListener : ISofiiListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitLambda_expression([NotNull] SofiiParser.Lambda_expressionContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.interpolated_string"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterInterpolated_string([NotNull] SofiiParser.Interpolated_stringContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.interpolated_string"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitInterpolated_string([NotNull] SofiiParser.Interpolated_stringContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.block"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

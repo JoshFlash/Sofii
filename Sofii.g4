@@ -133,12 +133,15 @@ guard_stmt: GUARD expression block;
 
 lambda_expression: LBRACE param COLON type ARROW expression RBRACE;
 
+// TODO - improve interpolation flexibility
+interpolated_string: STRING_LITERAL (LBRACE expression RBRACE)*;
+
 block: LBRACE statement* RBRACE;
 
 expression_stmt: expression;
 
 expression: primary (operator primary)*;
-primary: IDENTIFIER | INT_LITERAL | FLOAT_LITERAL | STRING_LITERAL | BOOL_LITERAL | command_call | member_access;
+primary: IDENTIFIER | INT_LITERAL | FLOAT_LITERAL | STRING_LITERAL | BOOL_LITERAL | command_call | member_access | interpolated_string;
 
 command_call: func_call | method_call | macro_call | object_creation;
 method_call : member_access LPAREN (expression (COMMA expression)*)? RPAREN;
