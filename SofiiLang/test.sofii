@@ -85,8 +85,8 @@ func Main() {
     const squaredNumbers = numbers onto [ val * val ]
     
     // Use filter function
-    // const evenNumbers = numbers where [ val % 2 == 0 ]
+    const evenNumbers = numbers where [ val % 2 == 0 ]
     
-    //Print("Squared Numbers: {squaredNumbers}")
-    //Print("Even Numbers: {evenNumbers}")
+    Print("Squared Numbers: {squaredNumbers}")
+    Print("Even Numbers: {evenNumbers}")
 }

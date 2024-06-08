@@ -30,6 +30,7 @@ PLUS: '+';
 MINUS: '-';
 STAR: '*';
 SLASH: '/';
+MOD: '%';
 ASSIGN: '=';
 EQUAL: '==';
 NOTEQUAL: '!=';
@@ -135,10 +136,12 @@ guard_stmt: GUARD expression block;
 
 interpolated_string: STRING_LITERAL (LBRACE expression RBRACE)*;
 
-map_expression: (IDENTIFIER | array_literal) ONTO array_literal;
+clause: map_clause | where_clause;
+map_clause: (IDENTIFIER | array_literal) ONTO array_literal;
+where_clause: (IDENTIFIER | array_literal) WHERE array_literal;
 
 expression: primary (operator primary)*;
-primary: command_call | member_access | literal | interpolated_string | map_expression;
+primary: command_call | member_access | literal | interpolated_string | clause;
 
 literal: IDENTIFIER | VAL | INT_LITERAL | FLOAT_LITERAL | STRING_LITERAL | BOOL_LITERAL | array_literal;
 array_literal: LBRACKET (expression (COMMA expression)*)? RBRACKET;
@@ -150,4 +153,4 @@ macro_call: IDENTIFIER ARROW LPAREN arg_list? RPAREN;
 
 member_access: IDENTIFIER (DOT IDENTIFIER)+;
 
-operator: PLUS | MINUS | STAR | SLASH | EQUAL | NOTEQUAL | LT | GT | LTE | GTE | AND | OR | NOT;
+operator: PLUS | MINUS | STAR | SLASH | EQUAL | NOTEQUAL | LT | GT | LTE | GTE | AND | OR | NOT | MOD;

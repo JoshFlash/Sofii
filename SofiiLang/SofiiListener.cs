@@ -361,15 +361,35 @@ public interface ISofiiListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitInterpolated_string([NotNull] SofiiParser.Interpolated_stringContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SofiiParser.map_expression"/>.
+	/// Enter a parse tree produced by <see cref="SofiiParser.clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterMap_expression([NotNull] SofiiParser.Map_expressionContext context);
+	void EnterClause([NotNull] SofiiParser.ClauseContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="SofiiParser.map_expression"/>.
+	/// Exit a parse tree produced by <see cref="SofiiParser.clause"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitMap_expression([NotNull] SofiiParser.Map_expressionContext context);
+	void ExitClause([NotNull] SofiiParser.ClauseContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.map_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMap_clause([NotNull] SofiiParser.Map_clauseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.map_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMap_clause([NotNull] SofiiParser.Map_clauseContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.where_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterWhere_clause([NotNull] SofiiParser.Where_clauseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.where_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitWhere_clause([NotNull] SofiiParser.Where_clauseContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.expression"/>.
 	/// </summary>

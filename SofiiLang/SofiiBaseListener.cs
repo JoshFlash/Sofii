@@ -432,17 +432,41 @@ public partial class SofiiBaseListener : ISofiiListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitInterpolated_string([NotNull] SofiiParser.Interpolated_stringContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SofiiParser.map_expression"/>.
+	/// Enter a parse tree produced by <see cref="SofiiParser.clause"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterMap_expression([NotNull] SofiiParser.Map_expressionContext context) { }
+	public virtual void EnterClause([NotNull] SofiiParser.ClauseContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="SofiiParser.map_expression"/>.
+	/// Exit a parse tree produced by <see cref="SofiiParser.clause"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitMap_expression([NotNull] SofiiParser.Map_expressionContext context) { }
+	public virtual void ExitClause([NotNull] SofiiParser.ClauseContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.map_clause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMap_clause([NotNull] SofiiParser.Map_clauseContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.map_clause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMap_clause([NotNull] SofiiParser.Map_clauseContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.where_clause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterWhere_clause([NotNull] SofiiParser.Where_clauseContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.where_clause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitWhere_clause([NotNull] SofiiParser.Where_clauseContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.expression"/>.
 	/// <para>The default implementation does nothing.</para>
