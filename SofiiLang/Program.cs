@@ -1,6 +1,5 @@
 ﻿using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
-using SofiiLang;
 
 RunParser();
 
@@ -33,4 +32,6 @@ static void RunParser()
     SofiiCustomListener listener = new SofiiCustomListener();
     ParseTreeWalker walker = new ParseTreeWalker();
     walker.Walk(listener, tree);
+
+    Console.Write(listener.GetOutput());
 }
