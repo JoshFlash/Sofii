@@ -122,7 +122,9 @@ param: IDENTIFIER COLON type;
 
 arg_list: expression (COMMA expression)*;
 
-type: IDENTIFIER | generic_type;
+type: IDENTIFIER | generic_type | primitive_type | array_type;
+array_type: LBRACKET primitive_type RBRACKET;
+primitive_type: 'int' | 'float' | 'bool' | 'string' | 'char';
 generic_type: IDENTIFIER LT type (COMMA type)* GT;
 
 assign_stmt: (IDENTIFIER | member_access) ASSIGN expression;
@@ -142,7 +144,6 @@ interpolated_string: STRING_LITERAL (LBRACE expression RBRACE)*;
 clause: map_clause | where_clause | range_clause;
 map_clause: (IDENTIFIER | array_literal) ONTO array_literal;
 where_clause: (IDENTIFIER | array_literal) WHERE array_literal;
-
 range_clause: LPAREN expression ARROW expression RPAREN;
      
 expression: primary (operator primary)*;

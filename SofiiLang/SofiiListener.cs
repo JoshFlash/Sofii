@@ -251,6 +251,26 @@ public interface ISofiiListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitType([NotNull] SofiiParser.TypeContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.array_type"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterArray_type([NotNull] SofiiParser.Array_typeContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.array_type"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitArray_type([NotNull] SofiiParser.Array_typeContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.primitive_type"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterPrimitive_type([NotNull] SofiiParser.Primitive_typeContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.primitive_type"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitPrimitive_type([NotNull] SofiiParser.Primitive_typeContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.generic_type"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

@@ -82,6 +82,9 @@ func Main() {
     // Use a function with guard statement
     Print(ValidateAge(20))
     Print(ValidateAge(16))
+
+    // Create a dynamic array
+    var arr : [string]
     
     // Create fixed array
     const numbers = [1, 2, 3, 4, 5]

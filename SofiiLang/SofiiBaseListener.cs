@@ -300,6 +300,30 @@ public partial class SofiiBaseListener : ISofiiListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitType([NotNull] SofiiParser.TypeContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.array_type"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterArray_type([NotNull] SofiiParser.Array_typeContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.array_type"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitArray_type([NotNull] SofiiParser.Array_typeContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.primitive_type"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterPrimitive_type([NotNull] SofiiParser.Primitive_typeContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.primitive_type"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitPrimitive_type([NotNull] SofiiParser.Primitive_typeContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.generic_type"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
