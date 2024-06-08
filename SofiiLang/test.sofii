@@ -55,7 +55,12 @@ func Main() {
     Print("Hello, World!")
 
     // Use macro
-    PrintTypeInfo -> (Vector)
+    PrintTypeInfo->(Vector)
+    
+    // Use for with range
+    for i in (0 -> numbers.length) {
+        Print(i)
+    }
 
     // Create and use an instance of Vector
     const v1 = Vector(1.0, 2.0)

@@ -468,6 +468,18 @@ public partial class SofiiBaseListener : ISofiiListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitWhere_clause([NotNull] SofiiParser.Where_clauseContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.range_clause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterRange_clause([NotNull] SofiiParser.Range_clauseContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.range_clause"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitRange_clause([NotNull] SofiiParser.Range_clauseContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.expression"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

@@ -52,6 +52,9 @@ COLON: ':';
 COMMA: ',';
 DOT: '.';
 ARROW: '->';
+BOW: '|}';
+DOTDOT: '..';
+DOTDOTDOT: '...';
 
 // Identifiers and Literals
 IDENTIFIER: [a-zA-Z_][a-zA-Z0-9_]*;
@@ -62,15 +65,15 @@ BOOL_LITERAL: 'true' | 'false';
 
 // Comments
 LINE_COMMENT: '//' ~[\r\n]* -> skip;
-BLOCK_COMMENT: '/*' .*? '*/' -> skip;
+BLOCK_COMMENT: '#' .*? '#' -> skip;
 
 // Whitespace
 WS: [ \t\r\n]+ -> skip;
 
 // Parser rules
-program: within_stmt* (use_stmt | statement)*;
+program: within_stmt? (use_stmt | statement)*;
 
-within_stmt: WITHIN IDENTIFIER;
+within_stmt: WITHIN IDENTIFIER (DOT IDENTIFIER)*;
 
 use_stmt: USE IDENTIFIER (DOT IDENTIFIER)*;
 
@@ -103,7 +106,7 @@ enum_case: CASE IDENTIFIER (LPAREN type RPAREN)?;
 trait_def: TRAIT IDENTIFIER LBRACE trait_method* RBRACE;
 trait_method: METHOD IDENTIFIER LPAREN param_list? RPAREN (ARROW type)?;
 
-class_def: CLASS IDENTIFIER (':' IDENTIFIER)? LBRACE class_body* RBRACE;
+class_def: CLASS IDENTIFIER (COLON IDENTIFIER (COMMA IDENTIFIER)*)? LBRACE class_body* RBRACE;
 class_body: const_def | method_def | init_def | var_def | statement;
 
 const_def: CONST IDENTIFIER (COLON type)? (ASSIGN expression)?;
@@ -136,10 +139,12 @@ guard_stmt: GUARD expression block;
 
 interpolated_string: STRING_LITERAL (LBRACE expression RBRACE)*;
 
-clause: map_clause | where_clause;
+clause: map_clause | where_clause | range_clause;
 map_clause: (IDENTIFIER | array_literal) ONTO array_literal;
 where_clause: (IDENTIFIER | array_literal) WHERE array_literal;
 
+range_clause: LPAREN expression ARROW expression RPAREN;
+     
 expression: primary (operator primary)*;
 primary: command_call | member_access | literal | interpolated_string | clause;
 

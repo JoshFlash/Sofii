@@ -391,6 +391,16 @@ public interface ISofiiListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitWhere_clause([NotNull] SofiiParser.Where_clauseContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SofiiParser.range_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterRange_clause([NotNull] SofiiParser.Range_clauseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SofiiParser.range_clause"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitRange_clause([NotNull] SofiiParser.Range_clauseContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
