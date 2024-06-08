@@ -271,16 +271,6 @@ public interface ISofiiListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitAssign_stmt([NotNull] SofiiParser.Assign_stmtContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SofiiParser.collection_assign_stmt"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterCollection_assign_stmt([NotNull] SofiiParser.Collection_assign_stmtContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SofiiParser.collection_assign_stmt"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitCollection_assign_stmt([NotNull] SofiiParser.Collection_assign_stmtContext context);
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.return_stmt"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -360,36 +350,6 @@ public interface ISofiiListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitInterpolated_string([NotNull] SofiiParser.Interpolated_stringContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="SofiiParser.collection_op"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterCollection_op([NotNull] SofiiParser.Collection_opContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SofiiParser.collection_op"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitCollection_op([NotNull] SofiiParser.Collection_opContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="SofiiParser.collection_assign"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterCollection_assign([NotNull] SofiiParser.Collection_assignContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SofiiParser.collection_assign"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitCollection_assign([NotNull] SofiiParser.Collection_assignContext context);
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="SofiiParser.collection_epxression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterCollection_epxression([NotNull] SofiiParser.Collection_epxressionContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SofiiParser.collection_epxression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitCollection_epxression([NotNull] SofiiParser.Collection_epxressionContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="SofiiParser.lambda_expression"/>.
 	/// </summary>

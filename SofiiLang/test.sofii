@@ -73,20 +73,18 @@ func Main() {
             Print("Error: {error}")
         }
     }
-
+    
     // Use a function with guard statement
     Print(ValidateAge(20))
     Print(ValidateAge(16))
-
+    
+//TODO - collections
     // Create fixed array
-    const numbers = [1, 2, 3, 4, 5]
-    
+    //const numbers = [1, 2, 3, 4, 5]
     // Use map function
-    const squaredNumbers = numbers onto [ i * i ]
-    
+    //const squaredNumbers = numbers onto [ i * i ]
     // Use filter function
-    const evenNumbers = numbers where [ i % 2 == 0 ]
-    
-    Print("Squared Numbers: {squaredNumbers}")
-    Print("Even Numbers: {evenNumbers}")
+    //const evenNumbers = numbers where [ i % 2 == 0 ]
+    //Print("Squared Numbers: {squaredNumbers}")
+    //Print("Even Numbers: {evenNumbers}")
 }

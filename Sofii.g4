@@ -126,7 +126,6 @@ type: IDENTIFIER | generic_type;
 generic_type: IDENTIFIER LT type (COMMA type)* GT;
 
 assign_stmt: (IDENTIFIER | member_access) ASSIGN expression;
-collection_assign_stmt: (IDENTIFIER | member_access) ASSIGN collection_op;
 
 return_stmt: RETURN expression?;
 
@@ -141,9 +140,11 @@ guard_stmt: GUARD expression block;
 
 interpolated_string: STRING_LITERAL (LBRACE expression RBRACE)*;
 
-collection_op: collection_epxression | primary ONTO collection_epxression | primary WHERE collection_epxression;
-collection_assign: LBRACKET arg_list? RBRACKET;
-collection_epxression: LBRACKET expression RBRACKET;
+//collection_assign_stmt: (IDENTIFIER | member_access) ASSIGN collection_op;
+
+//collection_op: collection_assign | primary ONTO collection_epxression | primary WHERE collection_epxression;
+//collection_assign: LBRACKET arg_list? RBRACKET;
+//collection_epxression: LBRACKET expression RBRACKET;
 
 lambda_expression: LBRACE param COLON type ARROW expression RBRACE;
 
