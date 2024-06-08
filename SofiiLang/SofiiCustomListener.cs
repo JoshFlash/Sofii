@@ -5,27 +5,27 @@ using System;
 
 public class SofiiCustomListener : SofiiBaseListener
 {
-    private int _level = 0;
+    private int _ctxLevel = 0;
 
-    private string GetIndentation()
+    private string GetIndentation(int level, char indent = '-')
     {
-        return new string(' ', _level * 2);
+        return new string(indent, level);
     }
 
     public override void EnterEveryRule(ParserRuleContext ctx)
     {
-        // Console.WriteLine(GetIndentation()  + "|--> " + ctx.GetType().Name);
-        _level++;
+        // Console.WriteLine('+' + GetIndentation(_ctxLevel) + "--> " + ctx.GetType().Name);
+        _ctxLevel++;
     }
 
     public override void ExitEveryRule(ParserRuleContext ctx)
     {
-        _level--;
+        _ctxLevel--;
     }
 
     private void PrintRule(string message)
     {
-        Console.WriteLine(GetIndentation() + message);
+        // Console.WriteLine(GetIndentation(_ctxLevel, ' ') + "· > " + message);
     }
     
     public override void EnterProgram(SofiiParser.ProgramContext context)
