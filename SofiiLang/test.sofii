@@ -23,7 +23,7 @@ trait Printable {
 }
 
 // Class definition with trait implementation and operator overloading
-class Vector: Printable {
+class Vector : Printable {
     const x: Float
     const y: Float
 

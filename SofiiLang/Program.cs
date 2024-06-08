@@ -29,9 +29,9 @@ static void RunParser()
     IParseTree tree = parser.program();
 
     // Create and attach the listener
-    SofiiCustomListener listener = new SofiiCustomListener();
+    SofiiToRustTranspiler transpiler = new ();
     ParseTreeWalker walker = new ParseTreeWalker();
-    walker.Walk(listener, tree);
+    walker.Walk(transpiler, tree);
 
-    Console.Write(listener.GetOutput());
+    Console.Write(transpiler.GetRustCode());
 }
