@@ -14,7 +14,7 @@ public class SofiiCustomListener : SofiiBaseListener
 
     public override void EnterEveryRule(ParserRuleContext ctx)
     {
-        Console.WriteLine(GetIndentation()  + "|--> " + ctx.GetType().Name);
+        // Console.WriteLine(GetIndentation()  + "|--> " + ctx.GetType().Name);
         _level++;
     }
 

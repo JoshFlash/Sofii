@@ -19,7 +19,7 @@ enum Result<T, E> {
 
 // Trait definition
 trait Printable {
-    func Description() -> String
+    method Description() -> String
 }
 
 // Class definition with trait implementation and operator overloading
@@ -32,11 +32,11 @@ class Vector: Printable {
         self.y = y
     }
 
-    static func Add(lhs: Vector, rhs: Vector) -> Vector {
+    func Add(lhs: Vector, rhs: Vector) -> Vector {
         return Vector(lhs.x + rhs.x, lhs.y + rhs.y)
     }
 
-    func Description() -> String {
+    method Description() -> String {
         return "Vector(x: {x}, y: {y})"
     }
 }
@@ -55,7 +55,7 @@ func Main() {
     Print("Hello, World!")
 
     // Use macro
-    PrintTypeInfo->(Vector)
+    PrintTypeInfo -> (Vector)
 
     // Create and use an instance of Vector
     const v1 = Vector(1.0, 2.0)
@@ -66,10 +66,10 @@ func Main() {
     // Use an enum with pattern matching
     const result: Result<Int, String> = Result.Success(42)
     switch result {
-        case Success(value) {
+        case Success value {
             Print("Success: {value}")
         }
-        case Failure(error) {
+        case Failure error {
             Print("Error: {error}")
         }
     }
@@ -78,10 +78,15 @@ func Main() {
     Print(ValidateAge(20))
     Print(ValidateAge(16))
 
-    // Use map and filter functions
+    // Create fixed array
     const numbers = [1, 2, 3, 4, 5]
-    const squaredNumbers = numbers.Map { $0 * $0 }
-    const evenNumbers = numbers.Filter { $0 % 2 == 0 }
+    
+    // Use map function
+    const squaredNumbers = numbers onto [ i * i ]
+    
+    // Use filter function
+    const evenNumbers = numbers where [ i % 2 == 0 ]
+    
     Print("Squared Numbers: {squaredNumbers}")
     Print("Even Numbers: {evenNumbers}")
 }
